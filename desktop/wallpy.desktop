@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Wallpy
+Version=1.0
+Name=Wallpaper Engine
+Comment=Lightweight Custom Linux Wallpaper Engine
+Exec=/usr/bin/python3 /home/antil/wallpaper-engine/wallpaper_engine/app.py
+Icon=/home/antil/wallpaper-engine/wallpaper_engine/assets/icons/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
