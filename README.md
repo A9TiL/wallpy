@@ -1,8 +1,39 @@
 # Wallpy
 
+![Platform](https://img.shields.io/badge/platform-linux-blue)
+![Python](https://img.shields.io/badge/python-3.x-yellow)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-active-success)
+
+
 Wallpy is a lightweight wallpaper manager for Linux that automatically rotates desktop wallpapers at configurable intervals.
 
 It provides a simple graphical interface to preview wallpapers, choose a wallpaper folder, and control a slideshow engine that periodically updates the desktop background.
+
+---
+
+## Download
+
+Download the latest version from the **GitHub Releases page**.
+
+**Latest Release**
+
+Wallpy-x86_64.AppImage
+
+Run it:
+```bash
+chmod +x Wallpy-x86_64.AppImage
+./Wallpy-x86_64.AppImage
+```
+
+No installation required.
+
+---
+
+## Screenshot
+
+![Wallpy GUI](docs/screenshot.png)
+
 
 ---
 
@@ -24,8 +55,9 @@ It provides a simple graphical interface to preview wallpapers, choose a wallpap
 Download the latest release from the **GitHub Releases page**.
 
 Example file:
+```bash
 Wallpy-x86_64.AppImage
-
+```
 
 Make it executable:
 
@@ -126,7 +158,7 @@ pip install pillow
 ```
 Run the application:
 ```
-python wallpaper_engine/app.py
+python -m wallpaper_engine.app
 ```
 ---
 
@@ -138,6 +170,8 @@ pyinstaller \
 --onefile \
 --windowed \
 --name wallpy \
+--hidden-import=PIL._tkinter_finder \
+--hidden-import=PIL.ImageTk \
 --add-data "wallpaper_engine/assets:wallpaper_engine/assets" \
 wallpaper_engine/app.py
 ```
@@ -145,6 +179,21 @@ Then build the AppImage:
 ```
 ARCH=x86_64 ./appimagetool-x86_64.AppImage AppDir
 ```
+
+---
+
+## Project Status
+
+Wallpy v1.0 is stable and functional.
+
+Current features include:
+
+* GUI wallpaper manager
+* Automatic wallpaper slideshow
+* Random and sequential modes
+* Wallpaper preview gallery
+* Portable AppImage distribution
+
 
 ---
 
