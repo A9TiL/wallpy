@@ -242,7 +242,3 @@ See the `LICENSE` file for details.
 ### A9TiL
 
 Github: https://github.com/A9TiL
-<<<<<<< HEAD
-=======
-
->>>>>>> 671a48783078a94f2878a8189b11a41175a0347d
