@@ -152,7 +152,7 @@ icon = tk.PhotoImage(file=ICON_PATH)
 root.iconphoto(False, icon)
 
 root.title("Wallpy")
-root.geometry("420x450")
+root.geometry("562x930")
 
 
 title = tk.Label(root, text="Wallpy", font=("Arial", 16))
@@ -264,5 +264,6 @@ reload_button.pack(pady=5)
 # INITIAL ENGINE STATUS
 update_engine_buttons()
 refresh_status()
+load_wallpaper_previews()
 
 root.mainloop()
