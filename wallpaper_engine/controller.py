@@ -2,7 +2,6 @@ import subprocess
 import sys
 import os
 
-
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "engine.pid")
 
@@ -18,8 +17,8 @@ def find_running_engine():
         return int(result.stdout.strip().split("\n")[0])
 
     return None
-    
-    
+
+
 def start_engine():
 
     pid = find_running_engine()
@@ -58,9 +57,9 @@ def stop_engine():
 
 def status_engine():
 
-    if os.path.exists(PID_FILE):
-        with open(PID_FILE) as f:
-            pid = f.read()
+    pid = find_running_engine()
+
+    if pid:
         print("Engine running with PID:", pid)
     else:
         print("Engine not running.")
