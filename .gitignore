@@ -28,3 +28,11 @@ AppDir/
 *.spec
 *.AppImage
 build-env/
+
+build/
+dist/
+AppDir/
+*.spec
+*.AppImage
+__pycache__/
+

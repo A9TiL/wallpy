@@ -1,3 +1,4 @@
+import sys
 import os
 import tkinter as tk
 from tkinter import filedialog
@@ -10,9 +11,23 @@ warnings.filterwarnings("ignore")
 from wallpaper_engine.utils.config_manager import load_config, save_config
 from wallpaper_engine.controller import find_running_engine
 
+def resource_path(relative_path):
+    """Return correct path for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ICON_PATH = os.path.join(BASE_DIR, "assets", "icons", "icon.png")
+#ICON_PATH = os.path.join(BASE_DIR, "assets", "icons", "icon.png")
+
+ICON_PATH = resource_path("wallpaper_engine/assets/icons/icon.png")
+
+
 
 preview_images = []
 
@@ -54,6 +69,9 @@ def choose_folder():
         config = load_config()
         config["folder"] = folder
         save_config(config)
+
+        #automatic wallpaper preview loading 
+        load_wallpaper_previews()
 
 
 def set_interval():
@@ -104,6 +122,7 @@ def load_wallpaper_previews():
     folder = config["folder"]
 
     if not os.path.exists(folder):
+        print("Wallpaper folder not found:", folder)
         return
 
     for widget in preview_frame.winfo_children():
@@ -140,8 +159,9 @@ def load_wallpaper_previews():
 
             image_index += 1
 
-        except:
-            pass
+        except Exception as e:
+            print("Preview load error:", e)
+
 
 
 # ---------------- GUI ---------------- #
@@ -257,7 +277,7 @@ preview_canvas.bind_all("<MouseWheel>", on_mousewheel)
 preview_canvas.bind_all("<Shift-MouseWheel>", on_shift_mousewheel)
 
 
-reload_button = tk.Button(root, text="Load Wallpapers", command=load_wallpaper_previews)
+reload_button = tk.Button(root, text="Refresh Wallpapers", command=load_wallpaper_previews)
 reload_button.pack(pady=5)
 
 
